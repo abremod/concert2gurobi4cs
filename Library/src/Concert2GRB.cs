@@ -135,6 +135,10 @@ namespace ILOG
             {
                 this.expr = expr;
             }
+            public INumExpr(INumVar var)
+            {
+                this.expr = new GRBLinExpr(var.var);
+            }
         }
 
         public class INumVar

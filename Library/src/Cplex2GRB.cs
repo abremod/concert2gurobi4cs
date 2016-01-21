@@ -181,6 +181,11 @@ namespace ILOG
                 result.var = _model.AddVar(lb, ub, col.objCoef, GRB.CONTINUOUS, col.column, name);
                 return result;
             }
+            // *****************************************************************
+            //
+            // Get Variable data
+            //
+            // *****************************************************************
             public double GetValue(INumVar var)
             {
                 return var.var.Get(GRB.DoubleAttr.X);
@@ -211,6 +216,20 @@ namespace ILOG
                 result = _model.Get(GRB.DoubleAttr.RC, grbVars);
                 return result;
             }
+            public void GetObjSA(double[] lbs, double[] ubs, INumVar[] vars)
+            {
+                for (int i = 0; i < vars.Length; i++)
+                {
+                    if (lbs != null)
+                    {
+                        lbs[i] = vars[i].var.Get(GRB.DoubleAttr.SAObjLow);
+                    }
+                    if (ubs != null)
+                    {
+                        ubs[i] = vars[i].var.Get(GRB.DoubleAttr.SAObjUp);
+                    }
+                }
+            }
             public void Add(VoidClass value)
             {
             }
@@ -220,7 +239,8 @@ namespace ILOG
                 return new VoidClass();
             }
             public class VoidClass
-            {  // hack for above method
+            {  
+                // hack for above method
             }
 
             // *****************************************************************
@@ -242,6 +262,18 @@ namespace ILOG
             {
                 Constraint result = new Constraint();
                 result.constr = _model.AddConstr(var.var, GRB.EQUAL, expr.expr, null);
+                return result;
+            }
+            public IConstraint AddEq(INumExpr lhs, INumExpr rhs, string name)
+            {
+                Constraint result = new Constraint();
+                result.constr = _model.AddConstr(lhs.expr, GRB.EQUAL, rhs.expr, name);
+                return result;
+            }
+            public IConstraint AddEq(INumExpr lhs, INumVar var, string name)
+            {
+                Constraint result = new Constraint();
+                result.constr = _model.AddConstr(lhs.expr, GRB.EQUAL, var.var, name);
                 return result;
             }
             public IRange AddLe(INumExpr expr, double rhs)
@@ -328,6 +360,12 @@ namespace ILOG
                 _model.SetObjective(result.expr, result.sense);
                 return result;
             }
+            public IObjective AddMinimize(INumVar var)
+            {
+                IObjective result = new IObjective(this._model, new INumExpr(var), GRB.MINIMIZE);
+                _model.SetObjective(result.expr, result.sense);
+                return result;
+            }
             public IObjective AddMinimize()
             {
                 IObjective result = new IObjective(this._model, GRB.MINIMIZE);
@@ -362,12 +400,20 @@ namespace ILOG
             {
                 _model.SetObjective(new GRBLinExpr(var.var, 1.0));
             }
+            public void SetLinearCoef(IObjective obj, double val, INumVar var)
+            {
+                var.var.Set(GRB.DoubleAttr.Obj, val);
+            }
 
             // *****************************************************************
             //
             // Helper functions
             //
             // *****************************************************************
+            public INumExpr LinearNumExpr(double val)
+            {
+                return new INumExpr(val);
+            }
             public INumExpr Sum(INumVar var, params INumExpr[] les)
             {
                 INumExpr result = new INumExpr();
@@ -390,6 +436,12 @@ namespace ILOG
                 {
                     result.expr += vars[i].var;
                 }
+                return result;
+            }
+            public INumExpr Sum(INumExpr expr, INumVar var)
+            {
+                INumExpr result = new INumExpr();
+                result.expr = expr.expr + var.var;
                 return result;
             }
             public INumExpr Diff(double val, INumExpr expr)

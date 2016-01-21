@@ -1,0 +1,21 @@
+**** Solver Output:
+
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 3 columns.
+Reduced LP has 2 rows, 2 columns, and 4 nonzeros.
+Presolve time = 0.02 sec. (0.00 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual objective     =           126.000000
+
+**** Diet Program Output:
+
+Objective Value = 131
+food.1 = 0, reduced cost = 11.3333333333333
+food.2 = 0, reduced cost = 6.66666666666667
+food.3 = 0, reduced cost = 11.3333333333333
+food.4 = 1, reduced cost = 0
+food.5 = 10, reduced cost = 0
+nutrient.iron, slack = 0, pi = 4.33333333333333
+nutrient.calcium, slack = 0, pi = 3.33333333333333
+Press any key to continue . . .

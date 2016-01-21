@@ -1,0 +1,107 @@
+
+Solver Output:
+Tried aggregator 1 time.
+LP Presolve eliminated 11 rows and 26 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.01 ticks)
+
+Facility Program Output:
+
+TotalShortage = 67
+TotalShippingCost= 0
+
+
+Solver Output:
+
+Iteration log . . .
+Iteration:     1    Objective     =         80406.360000
+
+Facility Program Output:
+
+TotalShortage = 53
+TotalShippingCost= 16800
+
+
+Solver Output:
+
+Iteration log . . .
+Iteration:     1    Objective     =        122807.600000
+
+Facility Program Output:
+
+TotalShortage = 38
+TotalShippingCost= 46800
+
+
+Solver Output:
+
+Iteration log . . .
+Iteration:     1    Objective     =        130407.040000
+
+Facility Program Output:
+
+TotalShortage = 32
+TotalShippingCost= 60000
+
+
+Solver Output:
+
+Iteration log . . .
+Iteration:     1    Objective     =        143206.500000
+
+Facility Program Output:
+
+TotalShortage = 25
+TotalShippingCost= 78200
+
+
+Solver Output:
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =        153204.200000
+
+Facility Program Output:
+
+TotalShortage = 7
+TotalShippingCost= 132200
+
+
+Solver Output:
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =        153901.860000
+
+Facility Program Output:
+
+TotalShortage = 0
+TotalShippingCost= 153900
+
+ship.0.0 = 0
+ship.0.1 = 0
+ship.0.2 = 14
+ship.0.3 = 6
+ship.1.0 = 14
+ship.1.1 = 0
+ship.1.2 = 0
+ship.1.3 = 8
+ship.2.0 = 0
+ship.2.1 = 0
+ship.2.2 = 0
+ship.2.3 = 6
+ship.3.0 = 1
+ship.3.1 = 18
+ship.3.2 = 0
+ship.3.3 = 0
+ship.4.0 = 0
+ship.4.1 = 0
+ship.4.2 = 0
+ship.4.3 = 0
+shortage.0 = 0
+shortage.1 = 0
+shortage.2 = 0
+shortage.3 = 0
+TotalShortage = 0
+TotalShippingCost = 153900
+Press any key to continue . . .
